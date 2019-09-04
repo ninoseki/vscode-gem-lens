@@ -1,0 +1,62 @@
+{
+  "name": "vscode-gem-lens",
+  "displayName": "Gem Lens",
+  "icon": "images/logo.png",
+  "description": "Shows the latest version for each gem in Gemfile or gemspec",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ninoseki/vscode-gem-lens.git"
+  },
+  "author": "Manabu Niseki",
+  "license": "MIT",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.37.0"
+  },
+  "keywords": [
+    "gem"
+  ],
+  "categories": [
+    "Programming Languages",
+    "Other"
+  ],
+  "activationEvents": [
+    "workspaceContains:*.gemspec"
+  ],
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "jest",
+    "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "lint": "eslint src --ext .ts",
+    "fmt": "prettier --write src/*.ts src/**/*.ts"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/jest": "^24.0.18",
+    "@types/moxios": "^0.4.8",
+    "@types/node": "^12.7.3",
+    "@types/vscode": "^1.37.0",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "coveralls": "^3.0.6",
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-jest": "^22.16.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "glob": "^7.1.4",
+    "jest": "^24.9.0",
+    "moxios": "^0.4.0",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.19.0",
+    "typescript": "^3.6.2",
+    "vscode-test": "^1.2.0"
+  },
+  "dependencies": {
+    "axios": "^0.19.0"
+  }
+}
