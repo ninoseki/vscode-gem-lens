@@ -8,6 +8,7 @@
     "url": "https://github.com/ninoseki/vscode-gem-lens.git"
   },
   "author": "Manabu Niseki",
+  "publisher": "ninoseki",
   "license": "MIT",
   "version": "0.0.1",
   "engines": {
