@@ -22,7 +22,8 @@
     "Other"
   ],
   "activationEvents": [
-    "workspaceContains:*.gemspec"
+    "workspaceContains:*.gemspec",
+    "workspaceContains:Gemfile"
   ],
   "main": "./out/extension.js",
   "scripts": {
