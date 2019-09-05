@@ -35,7 +35,7 @@ export class AbstractProvider implements vscode.HoverProvider {
   }
 
   public buildMessage(info: Details): string {
-    return `${info.info}\n\nLatest version: ${info.version}`;
+    return `${info.info}\n\nLatest version: ${info.version}\n\n${info.homepage_uri}`;
   }
 
   public gemRegexp(): RegExp {
