@@ -3,6 +3,7 @@ import axios from "axios";
 export interface Details {
   version: string;
   info: string;
+  homepage_uri: string;
 }
 
 export class Gem {
@@ -21,20 +22,5 @@ export class Gem {
       return res.data;
     }
     return undefined;
-  }
-
-  async lastetVersion(): Promise<string | undefined> {
-    const url = `https://rubygems.org/api/v1/versions/${this.name}/latest.json`;
-    const res = await axios.get(url);
-    if (res.status === 200) {
-      if ("version" in res.data) {
-        return `${res.data.version}`;
-      }
-    }
-    return undefined;
-  }
-
-  link(): string {
-    return `https://rubygems.org/gems/${this.name}`;
   }
 }
