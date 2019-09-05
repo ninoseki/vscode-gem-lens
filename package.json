@@ -2,7 +2,7 @@
   "name": "vscode-gem-lens",
   "displayName": "Gem Lens",
   "icon": "images/logo.png",
-  "description": "Shows the latest version for each gem in Gemfile or gemspec",
+  "description": "Shows the latest version of a gem in Gemfile and gemspec",
   "repository": {
     "type": "git",
     "url": "https://github.com/ninoseki/vscode-gem-lens.git"
