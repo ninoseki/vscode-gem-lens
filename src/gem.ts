@@ -7,9 +7,9 @@ export interface Details {
 
 export class Gem {
   name: string;
-  requirements: string;
+  requirements: string | undefined;
 
-  constructor(name: string, requirements: string) {
+  constructor(name: string, requirements: string | undefined) {
     this.name = name;
     this.requirements = requirements;
   }
