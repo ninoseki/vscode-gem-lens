@@ -1,7 +1,4 @@
-interface Dependency {
-  name: string;
-  requirements: string | undefined;
-}
+import { Dependency } from "./types";
 
 function quoteMapper(line: string): string {
   const quoteIndex = line.indexOf("'");
@@ -24,7 +21,7 @@ export function extractDependency(line: string): Dependency | undefined {
   const parts = mapped
     .trim()
     .split(",")
-    .map(s => s.trim().replace(/'|"/g, ""));
+    .map((s) => s.trim().replace(/'|"/g, ""));
 
   if (parts.length >= 1) {
     const name = parts[0];

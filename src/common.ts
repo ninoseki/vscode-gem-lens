@@ -1,3 +1,3 @@
-import { Details } from "./gem";
+import { Cache, Details } from "./types";
 
-export const cache: Map<string, Details> = new Map();
+export const cache: Cache = new Map<string, Details>();
