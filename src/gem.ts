@@ -1,10 +1,6 @@
 import axios from "axios";
 
-export interface Details {
-  version: string;
-  info: string;
-  homepage_uri: string;
-}
+import { Details } from "./types";
 
 export class Gem {
   name: string;
