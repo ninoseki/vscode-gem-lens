@@ -1,7 +1,8 @@
 import * as vscode from "vscode";
-import { extractDependency } from "../extractDependency";
-import { Gem, Details } from "../gem";
+
 import { cache } from "../common";
+import { extractDependency } from "../extractDependency";
+import { Details,Gem } from "../gem";
 
 export class AbstractProvider implements vscode.HoverProvider {
   public async provideHover(
