@@ -1,4 +1,5 @@
 import * as moxios from "moxios";
+
 import { Gem } from "../gem";
 
 describe("Gem", () => {

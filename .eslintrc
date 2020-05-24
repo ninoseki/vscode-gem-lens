@@ -8,7 +8,7 @@
     "prettier",
     "prettier/@typescript-eslint"
   ],
-  "plugins": ["@typescript-eslint", "jest"],
+  "plugins": ["@typescript-eslint", "jest","simple-import-sort"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json",
@@ -17,6 +17,7 @@
   "rules": {
     "@typescript-eslint/interface-name-prefix": 0,
     "max-len": 0,
-    "no-console": 0
+    "no-console": 0,
+    "simple-import-sort/sort": "error",
   }
 }
