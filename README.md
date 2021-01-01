@@ -1,6 +1,6 @@
 # vscode-gem-lens
 
-[![Build Status](https://travis-ci.com/ninoseki/vscode-gem-lens.svg?branch=master)](https://travis-ci.com/ninoseki/vscode-gem-lens)
+![Node.js CI](https://github.com/ninoseki/vscode-gem-lens/workflows/Node.js%20CI/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/ninoseki/vscode-gem-lens/badge.svg?branch=master)](https://coveralls.io/github/ninoseki/vscode-gem-lens?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/ninoseki/vscode-gem-lens/badge)](https://www.codefactor.io/repository/github/ninoseki/vscode-gem-lens)
 
