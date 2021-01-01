@@ -32,7 +32,7 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile",
     "test": "jest",
-    "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "coverage": "jest --coverage && cat ./coverage/lcov.info",
     "lint": "eslint src --ext .ts",
     "fmt": "prettier --write src/*.ts src/**/*.ts"
   },
