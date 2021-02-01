@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@types/glob": "7.1.3",
-    "@types/jest": "26.0.19",
+    "@types/jest": "26.0.20",
     "@types/moxios": "0.4.9",
     "@types/node": "14.14.17",
     "@types/vscode": "1.52.0",
