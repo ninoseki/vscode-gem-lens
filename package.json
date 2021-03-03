@@ -40,7 +40,7 @@
     "@types/glob": "7.1.3",
     "@types/jest": "26.0.20",
     "@types/moxios": "0.4.10",
-    "@types/node": "14.14.22",
+    "@types/node": "14.14.31",
     "@types/vscode": "1.53.0",
     "@typescript-eslint/eslint-plugin": "3.9.0",
     "@typescript-eslint/parser": "3.9.0",
