@@ -8,12 +8,12 @@ function quoteMapper(line: string): string {
 
 const dependencyRegexp = /\bgem( |"|')|\w+\.(add_development_dependency|add_runtime_dependency|add_dependency)/;
 
-function isDependecy(line: string): boolean {
+function isDependency(line: string): boolean {
   return dependencyRegexp.test(line);
 }
 
 export function extractDependency(line: string): Dependency | undefined {
-  if (!isDependecy(line.trim())) {
+  if (!isDependency(line.trim())) {
     return undefined;
   }
 

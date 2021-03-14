@@ -1,6 +1,10 @@
-import axios from "axios";
+import { setup } from "axios-cache-adapter";
 
 import { Details } from "./types";
+
+const api = setup({
+  baseURL: "https://rubygems.org",
+});
 
 export class Gem {
   name: string;
@@ -12,8 +16,8 @@ export class Gem {
   }
 
   async details(): Promise<Details | undefined> {
-    const url = `https://rubygems.org/api/v1/gems/${this.name}.json`;
-    const res = await axios.get<Details>(url);
+    const path = `/api/v1/gems/${this.name}.json`;
+    const res = await api.get<Details>(path);
     if (res.status === 200) {
       return res.data;
     }

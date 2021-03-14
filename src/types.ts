@@ -8,5 +8,3 @@ export interface Dependency {
   name: string;
   requirements: string | undefined;
 }
-
-export type Cache = Map<string, Details>;
