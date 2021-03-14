@@ -1,6 +1,5 @@
 import * as vscode from "vscode";
 
-import { cache } from "../common";
 import { extractDependency } from "../extractDependency";
 import { Gem } from "../gem";
 import { Details } from "../types";
@@ -9,7 +8,7 @@ export class AbstractProvider implements vscode.HoverProvider {
   public async provideHover(
     document: vscode.TextDocument,
     position: vscode.Position,
-    token: vscode.CancellationToken
+    _token: vscode.CancellationToken
   ): Promise<vscode.Hover | undefined> {
     const range = document.getWordRangeAtPosition(position, this.gemRegexp());
     const line = document.lineAt(position.line).text.trim();
@@ -20,13 +19,8 @@ export class AbstractProvider implements vscode.HoverProvider {
     }
 
     const gem = new Gem(dependency.name, dependency.requirements);
-    if (!cache.has(gem.name)) {
-      const details = await gem.details();
-      if (details !== undefined) {
-        cache.set(gem.name, details);
-      }
-    }
-    const details = cache.get(gem.name);
+    const details = await gem.details();
+
     if (details === undefined) {
       return;
     }
