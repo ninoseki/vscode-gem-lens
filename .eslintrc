@@ -1,23 +1,29 @@
 {
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": ".",
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:@typescript-eslint/recommended",
     "plugin:jest/recommended",
-    "prettier",
-    "prettier/@typescript-eslint"
+    "prettier"
   ],
-  "plugins": ["@typescript-eslint", "jest","simple-import-sort"],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": "./tsconfig.json",
-    "tsconfigRootDir": "."
-  },
+  "plugins": ["@typescript-eslint", "jest", "simple-import-sort", "prettier"],
   "rules": {
-    "@typescript-eslint/interface-name-prefix": 0,
-    "max-len": 0,
-    "no-console": 0,
-    "simple-import-sort/sort": "error",
+     "@typescript-eslint/semi": "warn",
+    "curly": "warn",
+    "eqeqeq": "warn",
+    "no-throw-literal": "warn",
+    "prettier/prettier": "error",
+    "semi": "off",
+    "simple-import-sort/exports": "error",
+    "simple-import-sort/imports": "error"
   }
 }
