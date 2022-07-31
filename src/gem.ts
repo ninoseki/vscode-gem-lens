@@ -1,10 +1,12 @@
-import { setup } from "axios-cache-adapter";
+import Axios from "axios";
+import { setupCache } from "axios-cache-interceptor";
 
 import { Details } from "./types";
 
-const api = setup({
+const api = Axios.create({
   baseURL: "https://rubygems.org",
 });
+setupCache(api);
 
 export class Gem {
   name: string;
