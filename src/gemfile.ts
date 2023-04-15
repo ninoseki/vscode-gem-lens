@@ -1,4 +1,4 @@
-import { Dependency } from "./types";
+import { Dependency } from "@/types";
 
 function quoteMapper(line: string): string {
   const quoteIndex = line.indexOf("'");
@@ -6,7 +6,8 @@ function quoteMapper(line: string): string {
   return line.slice(start);
 }
 
-const dependencyRegexp = /\bgem( |"|')|\w+\.(add_development_dependency|add_runtime_dependency|add_dependency)/;
+const dependencyRegexp =
+  /\bgem( |"|')|\w+\.(add_development_dependency|add_runtime_dependency|add_dependency)/;
 
 function isDependency(line: string): boolean {
   return dependencyRegexp.test(line);

@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { setupCache } from "axios-cache-interceptor";
 
-import { Details } from "./types";
+import { Details } from "@/types";
 
 const api = Axios.create({
   baseURL: "https://rubygems.org",
