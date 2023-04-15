@@ -1,10 +1,9 @@
 import * as vscode from "vscode";
 
-import {
-  GemfileProvider,
-  GemfileLockProvider,
-  GemspecProvider,
-} from "@/providers";
+import { gemfileMapper, gemfileRegexp } from "@/gemfile";
+import { gemfileLockMapper, gemfileLockRegexp } from "@/gemfileLock";
+import { gemspecMapper, gemspecRegexp } from "@/gemspec";
+import { AbstractHoverProvider } from "@/hover";
 
 export function activate(context: vscode.ExtensionContext): void {
   const gemspecFile: vscode.DocumentFilter = {
@@ -12,8 +11,12 @@ export function activate(context: vscode.ExtensionContext): void {
     pattern: "**/*.gemspec",
     scheme: "file",
   };
+
   context.subscriptions.push(
-    vscode.languages.registerHoverProvider(gemspecFile, new GemspecProvider())
+    vscode.languages.registerHoverProvider(
+      gemspecFile,
+      new AbstractHoverProvider(gemspecRegexp, gemspecMapper)
+    )
   );
 
   const gemfileFile: vscode.DocumentFilter = {
@@ -21,7 +24,10 @@ export function activate(context: vscode.ExtensionContext): void {
     scheme: "file",
   };
   context.subscriptions.push(
-    vscode.languages.registerHoverProvider(gemfileFile, new GemfileProvider())
+    vscode.languages.registerHoverProvider(
+      gemfileFile,
+      new AbstractHoverProvider(gemfileRegexp, gemfileMapper)
+    )
   );
 
   const gemfileLockFile: vscode.DocumentFilter = {
@@ -31,7 +37,7 @@ export function activate(context: vscode.ExtensionContext): void {
   context.subscriptions.push(
     vscode.languages.registerHoverProvider(
       gemfileLockFile,
-      new GemfileLockProvider()
+      new AbstractHoverProvider(gemfileLockRegexp, gemfileLockMapper)
     )
   );
 }

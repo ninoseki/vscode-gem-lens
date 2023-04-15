@@ -6,6 +6,7 @@ import { Details } from "@/types";
 const api = Axios.create({
   baseURL: "https://rubygems.org",
 });
+
 setupCache(api);
 
 export class Gem {
@@ -19,10 +20,15 @@ export class Gem {
 
   async details(): Promise<Details | undefined> {
     const path = `/api/v1/gems/${this.name}.json`;
-    const res = await api.get<Details>(path);
-    if (res.status === 200) {
-      return res.data;
+    try {
+      const res = await api.get<Details>(path);
+      if (res.status === 200) {
+        return res.data;
+      }
+    } catch (_) {
+      return undefined;
     }
+
     return undefined;
   }
 }

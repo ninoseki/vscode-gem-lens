@@ -1,5 +1,6 @@
-import { extractDependency } from "@/gemfileLock";
+import { gemfileLockMapper } from "@/gemfileLock";
 import { Dependency } from "@/types";
+import { extractDependency } from "@/utils";
 
 describe("extractDependency", () => {
   it.each([
@@ -9,7 +10,7 @@ describe("extractDependency", () => {
       { name: "activerecord", requirements: "= 7.0.4.3" },
     ],
   ])("should return dependency", (line: string, expected: Dependency) => {
-    const dep = extractDependency(line);
+    const dep = extractDependency(line, gemfileLockMapper);
 
     expect(dep).not.toBeUndefined();
     expect(dep?.name).toBe(expected?.name);
