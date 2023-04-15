@@ -2,14 +2,23 @@ import * as vscode from "vscode";
 
 import { Gem } from "@/gem";
 import { Dependency, Details } from "@/types";
+import { extractDependency } from "@/utils";
 
-export class AbstractProvider implements vscode.HoverProvider {
+export class AbstractHoverProvider implements vscode.HoverProvider {
+  private regexp: RegExp;
+  private mapper: (s: string) => Dependency | undefined;
+
+  constructor(regexp: RegExp, mapper: (s: string) => Dependency | undefined) {
+    this.regexp = regexp;
+    this.mapper = mapper;
+  }
+
   public async provideHover(
     document: vscode.TextDocument,
     position: vscode.Position,
     _token: vscode.CancellationToken
   ): Promise<vscode.Hover | undefined> {
-    const range = document.getWordRangeAtPosition(position, this.gemRegexp());
+    const range = document.getWordRangeAtPosition(position, this.regexp);
     const line = document.lineAt(position.line).text.trim();
 
     const dependency = this.extractDependency(line);
@@ -33,11 +42,7 @@ export class AbstractProvider implements vscode.HoverProvider {
     return `${info.info}\n\nLatest version: ${info.version}\n\n${info.homepage_uri}`;
   }
 
-  public gemRegexp(): RegExp {
-    return /foo bar/;
-  }
-
-  public extractDependency(_: string): Dependency | undefined {
-    return undefined;
+  public extractDependency(line: string): Dependency | undefined {
+    return extractDependency(line, this.mapper);
   }
 }
