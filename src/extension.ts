@@ -1,7 +1,10 @@
 import * as vscode from "vscode";
 
-import { GemfileProvider } from "./providers/gemfileProvider";
-import { GemspecProvider } from "./providers/gemspecProvider";
+import {
+  GemfileProvider,
+  GemfileLockProvider,
+  GemspecProvider,
+} from "@/providers";
 
 export function activate(context: vscode.ExtensionContext): void {
   const gemspecFile: vscode.DocumentFilter = {
@@ -19,6 +22,17 @@ export function activate(context: vscode.ExtensionContext): void {
   };
   context.subscriptions.push(
     vscode.languages.registerHoverProvider(gemfileFile, new GemfileProvider())
+  );
+
+  const gemfileLockFile: vscode.DocumentFilter = {
+    pattern: "**/Gemfile.lock",
+    scheme: "file",
+  };
+  context.subscriptions.push(
+    vscode.languages.registerHoverProvider(
+      gemfileLockFile,
+      new GemfileLockProvider()
+    )
   );
 }
 

@@ -1,4 +1,4 @@
-import { extractDependency } from "@/extractDependency";
+import { extractDependency } from "@/gemfile";
 import { Dependency } from "@/types";
 
 describe("extractDependency", () => {

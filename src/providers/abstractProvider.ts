@@ -1,8 +1,7 @@
 import * as vscode from "vscode";
 
-import { extractDependency } from "../extractDependency";
-import { Gem } from "../gem";
-import { Details } from "../types";
+import { Gem } from "@/gem";
+import { Dependency, Details } from "@/types";
 
 export class AbstractProvider implements vscode.HoverProvider {
   public async provideHover(
@@ -13,7 +12,7 @@ export class AbstractProvider implements vscode.HoverProvider {
     const range = document.getWordRangeAtPosition(position, this.gemRegexp());
     const line = document.lineAt(position.line).text.trim();
 
-    const dependency = extractDependency(line);
+    const dependency = this.extractDependency(line);
     if (!dependency) {
       return;
     }
@@ -36,5 +35,9 @@ export class AbstractProvider implements vscode.HoverProvider {
 
   public gemRegexp(): RegExp {
     return /foo bar/;
+  }
+
+  public extractDependency(_: string): Dependency | undefined {
+    return undefined;
   }
 }
