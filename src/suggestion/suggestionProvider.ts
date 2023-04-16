@@ -13,7 +13,6 @@ export class SuggestionProvider {
   }
 
   public suggest(): vscode.Command {
-    console.log(this.isLatest());
     if (this.isLatest()) {
       return { title: "latest", command: "" };
     }

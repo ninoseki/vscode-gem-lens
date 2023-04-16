@@ -30,15 +30,16 @@ export class AbstractCodeLensProvider implements vscode.CodeLensProvider {
     document: vscode.TextDocument,
     _token: vscode.CancellationToken
   ) {
+    this.codeLenses = [];
+
     const enabled = vscode.workspace
       .getConfiguration(EXT_ID)
       .get(ENABLE_CODE_LENS_KEY, true);
 
     if (!enabled) {
-      return [];
+      return this.codeLenses;
     }
 
-    this.codeLenses = [];
     for (let i = 0; i < document.lineCount; i++) {
       const line = document.lineAt(i);
       const matches = this.regexp.exec(line.text.trim());
@@ -61,10 +62,8 @@ export class AbstractCodeLensProvider implements vscode.CodeLensProvider {
       const range = document.getWordRangeAtPosition(position, this.regexp);
       if (range) {
         const codeLens = new vscode.CodeLens(range);
-        console.log([dependency, gem]);
         const suggestionProvider = new SuggestionProvider(dependency, gem);
         codeLens.command = suggestionProvider.suggest();
-        console.log(codeLens.command);
         this.codeLenses.push(codeLens);
       }
     }
