@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { setupCache } from "axios-cache-interceptor";
 
-import { Details } from "@/types";
+import { Gem } from "@/types";
 
 const api = Axios.create({
   baseURL: "https://rubygems.org",
@@ -9,26 +9,16 @@ const api = Axios.create({
 
 setupCache(api);
 
-export class Gem {
-  name: string;
-  requirements: string | undefined;
-
-  constructor(name: string, requirements: string | undefined) {
-    this.name = name;
-    this.requirements = requirements;
-  }
-
-  async details(): Promise<Details | undefined> {
-    const path = `/api/v1/gems/${this.name}.json`;
-    try {
-      const res = await api.get<Details>(path);
-      if (res.status === 200) {
-        return res.data;
-      }
-    } catch (_) {
-      return undefined;
+export async function getGem(name: string) {
+  const path = `/api/v1/gems/${name}.json`;
+  try {
+    const res = await api.get<Gem>(path);
+    if (res.status === 200) {
+      return res.data;
     }
-
+  } catch (_) {
     return undefined;
   }
+
+  return undefined;
 }

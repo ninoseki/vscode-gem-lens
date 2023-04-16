@@ -1,4 +1,4 @@
-export interface Details {
+export interface Gem {
   version: string;
   info: string;
   homepage_uri: string;

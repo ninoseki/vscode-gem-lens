@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 
-import { Gem } from "@/gem";
-import { Dependency, Details } from "@/types";
+import { getGem } from "@/gem";
+import { Dependency, Gem } from "@/types";
 import { extractDependency } from "@/utils";
 
 export class AbstractHoverProvider implements vscode.HoverProvider {
@@ -26,20 +26,19 @@ export class AbstractHoverProvider implements vscode.HoverProvider {
       return;
     }
 
-    const gem = new Gem(dependency.name, dependency.requirements);
-    const details = await gem.details();
+    const gem = await getGem(dependency.name);
 
-    if (details === undefined) {
+    if (gem === undefined) {
       return;
     }
 
-    const message = this.buildMessage(details);
+    const message = this.buildMessage(gem);
     const link = new vscode.Hover(message, range);
     return link;
   }
 
-  public buildMessage(info: Details): string {
-    return `${info.info}\n\nLatest version: ${info.version}\n\n${info.homepage_uri}`;
+  public buildMessage(gem: Gem): string {
+    return `${gem.info}\n\nLatest version: ${gem.version}\n\n${gem.homepage_uri}`;
   }
 
   public extractDependency(line: string): Dependency | undefined {

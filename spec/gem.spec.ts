@@ -1,18 +1,9 @@
-import { Gem } from "@/gem";
+import { getGem } from "@/gem";
 
-describe("Gem", () => {
-  test("initialize", () => {
-    const gem = new Gem("rails", "~> 1.0");
-    expect(gem.name).toBe("rails");
-    expect(gem.requirements).toBe("~> 1.0");
-  });
-
-  test("info", async () => {
-    const gem = new Gem("rails", "~> 1.0");
-    const details = await gem.details();
-    expect(details).toBeDefined();
-    expect(details?.info).toBe(
-      "Ruby on Rails is a full-stack web framework optimized for programmer happiness and sustainable productivity. It encourages beautiful code by favoring convention over configuration."
-    );
-  });
+test("getGem", async () => {
+  const gem = await getGem("rails");
+  expect(gem).toBeDefined();
+  expect(gem?.info).toBe(
+    "Ruby on Rails is a full-stack web framework optimized for programmer happiness and sustainable productivity. It encourages beautiful code by favoring convention over configuration."
+  );
 });
