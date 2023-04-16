@@ -10,9 +10,9 @@
   "author": "Manabu Niseki",
   "publisher": "ninoseki",
   "license": "MIT",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "engines": {
-    "vscode": "^1.69.0"
+    "vscode": "^1.77.0"
   },
   "keywords": [
     "gem"
